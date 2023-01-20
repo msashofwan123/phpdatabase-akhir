@@ -76,7 +76,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tables</h6>
             <a class="collapse-item active" href="simple-tables.php">Simple Tables</a>
-            <a class="collapse-item" href="datatables.php">DataTables</a>
+            <a class="collapse-item" href="dataobat.php">DataTables</a>
           </div>
         </div>
       </li>
