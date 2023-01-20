@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if ($_SESSION['nama_login'] == null) {
+    header("location: /phpdatabase-akhir/login");
+};
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +25,8 @@
         <div id="inner">
             <img src="assets/svg/logo.svg" alt="Crypts logo" id="logo">
             <h1>Apotek Inspira Media</h1>
-            <p class="subtitle">Partner Semua Apotek dalam Mencari Obat</p>
-            <a href="#" class="cta cta--white ">Login or signup</a>
+            <p class="subtitle">Apotek Digital Pertama Di Indonesia</p>
+            <a href="/phpdatabase-akhir/login" class="cta cta--white ">Login or signup</a>
         </div>
         <!-- inner sub id ends -->
 

@@ -5,8 +5,9 @@ require_once('../database/koneksi.php');
 $username = $_POST['username'];
 $pass = $_POST['password'];
 
-// Cek Ketersediaan data di Database
-$sql = "SELECT * FROM `login` WHERE `username` = '$username' AND `password` = '$pass' ";
+// CEK KETERSEDIAAN DATA AKUN DI DATABASE
+$sql = "SELECT * FROM `login` WHERE (`username` = '$username' OR `email` = '$username') AND `password` = '$pass'
+";
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
 

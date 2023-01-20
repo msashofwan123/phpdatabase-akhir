@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['ingatkan'])) {
-    header('location: index.php');
+    header('location: ../index.php');
 }
 ?>
 
@@ -13,6 +13,7 @@ if (isset($_SESSION['ingatkan'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico">
 
     <title>Login Apotek</title>
 
@@ -49,13 +50,14 @@ if (isset($_SESSION['ingatkan'])) {
             <div class="col-lg-4"></div>
         </div>
     </div>
+    <img src="../assets/logo.png" style="width:100px;">
+    <br>
     <div class="box">
         <form autocomplete="off" action="aksilogin.php" method="POST">
-
             <h2>SIGN IN</h2>
             <div class="inputBox">
                 <input type="text" name="username" required="required">
-                <span>Username</span>
+                <span>Username/Email</span>
                 <i></i>
             </div>
             <div class="inputBox">
@@ -69,7 +71,7 @@ if (isset($_SESSION['ingatkan'])) {
             </div>
             <div class="links">
                 <a href="#">Forgot Password ?</a>
-                <a href="#">Signup</a>
+                <a href="../register/">Signup</a>
             </div>
             <input type="submit" name="submit" value="Login">
         </form>
