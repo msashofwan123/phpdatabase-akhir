@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-if ($_SESSION['nama_login'] == null) {
-    header("location: /phpdatabase-akhir/login");
-};
-
 ?>
 
 <!DOCTYPE html>
