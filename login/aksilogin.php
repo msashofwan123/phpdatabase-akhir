@@ -20,7 +20,7 @@ if ($data) {
         if ($_POST['ingatkan']) {
             $_SESSION['ingatkan'] = true;
         }
-        header("location: ../index.php");
+        header("location: ../admin");
     } else {
         header("location: index.php?aktivasi=Maaf, Akun Anda Belum Teraktivasi");
     }

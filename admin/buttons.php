@@ -63,7 +63,7 @@
         <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Forms</h6>
-            <a class="collapse-item" href="form_basics.php">Form Basics</a>
+            <a class="collapse-item" href="add_obat.php">Form Basics</a>
             <a class="collapse-item" href="form_advanceds.php">Form Advanceds</a>
           </div>
         </div>

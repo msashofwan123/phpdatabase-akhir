@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if ($_SESSION['nama_login'] == null) {
+    header("location: ../login");
+};
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +44,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-            </ol>
+            </ol> 
           </div>
 
           <div class="row mb-3">
