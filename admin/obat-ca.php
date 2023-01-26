@@ -18,8 +18,10 @@ move_uploaded_file($_FILES["file"]["tmp_name"], "storage/img/$sort");
 $sql = "INSERT INTO `dataobat` (`nama`, `khasiat`, `dosis`, `izin`, `golongan`, `file` ) VALUES ('$nama', '$khasiat', '$dosis', '$izin', '$golongan', '$file')";
 $insert = mysqli_query($conn, $sql);
 
-if ($insert) {
-    header("Location: add_obat.php?success=Data Berhasil Di Input");
-} else {
-    header("Location: add_obat.php?alert=Data Gagal Di Input");
-}
+// if ($insert) {
+//     header("Location: add_obat.php?success=Data Berhasil Di Input");
+// } else {
+//     header("Location: add_obat.php?alert=Data Gagal Di Input");
+// }
+
+$query = mysqli_query($conn, "INSERT INTO `statusobat` (`id`, `id_obat`, `id_stok`) VALUES ( null, (SELECT id FROM dataobat WHERE nama = '$nama' LIMIT 1), '$status')");

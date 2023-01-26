@@ -5,10 +5,10 @@ if ($_SESSION['nama_login'] == null) {
   header("location: ../login");
 };
 
-?>
-
-<?php
-
+require_once('../database/koneksi.php');
+// Data Status
+$sql_status = "SELECT * FROM stokobat";
+$result_status = mysqli_query($conn, $sql_status);
 ?>
 
 <!DOCTYPE html>
@@ -117,7 +117,13 @@ if ($_SESSION['nama_login'] == null) {
                     <div class="form-group">
                       <label for="status">Status Obat</label>
                       <select class="form-control" id="status" name="status">
-                        <option>1</option>
+                        <option>Pilih Status</option>
+                        <?php
+                        while ($statusobat = mysqli_fetch_assoc($result_status)) {
+                          $selected = ($statusobat['id'] == $idstok) ? 'selected' : '';
+                          echo "<option value='{$statusobat['id']}' $selected>{$statusobat['name']}</option>";
+                        }
+                        ?>
                       </select>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
