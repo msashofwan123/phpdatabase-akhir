@@ -15,7 +15,7 @@ echo var_dump($_POST);
 $sort = $_FILES["file"]["name"];
 move_uploaded_file($_FILES["file"]["tmp_name"], "storage/img/$sort");
 
-$sql = "INSERT INTO `dataobat` (`nama`, `khasiat`, `dosis`, `izin`, `file`) VALUES ('$nama', '$khasiat', '$dosis', '$izin', '$file')";
+$sql = "INSERT INTO `dataobat` (`nama`, `khasiat`, `dosis`, `izin`, `golongan`, `file` ) VALUES ('$nama', '$khasiat', '$dosis', '$izin', '$golongan', '$file')";
 $insert = mysqli_query($conn, $sql);
 
 if ($insert) {

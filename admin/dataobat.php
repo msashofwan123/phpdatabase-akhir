@@ -119,7 +119,7 @@ $result = mysqli_query($conn, $sql);
                           <td><?= $data['dosis']; ?></td>
                           <td><?= $data['izin']; ?></td>
                           <td><img class="img-thumbnail" width="100" src="storage/img/<?= $gambar ?>" /></td>
-                          <td></td>
+                          <td><?= $data['golongan']; ?></td>
                           <td></td>
                           <td>
                             <button class="btn btn-info btn-edit" data-bs-toggle="modal" data-bs-target="#editdata" data-id="<?= $data['id'] ?>" data-bs-aksi="ubah"> Ubah

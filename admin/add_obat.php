@@ -106,7 +106,12 @@ if ($_SESSION['nama_login'] == null) {
                     <div class="form-group">
                       <label for="golongan">Golongan Obat</label>
                       <select class="form-control" id="golongan" name="golongan">
-                        <option>1</option>
+                        <option>Pilih Golongan</option>
+                        <option value="Obat Bebas">Obat Bebas</option>
+                        <option value="Obat Bebas Terbatas">Obat Bebas Terbatas</option>
+                        <option value="Obat Keras">Obat Keras</option>
+                        <option value="Obat Wajib Apotek">Obat Wajib Apotek</option>
+                        <option value="Obat Herbal">Obat Herbal</option>
                       </select>
                     </div>
                     <div class="form-group">
