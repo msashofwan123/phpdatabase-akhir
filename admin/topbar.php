@@ -1,6 +1,17 @@
+        <head>
+            <style>
+                .fa-bars{
+                    color:white;
+                }
+                .btn-fa:hover ~ .fa-bars{
+                    color:#3f51b5;
+                }
+            </style>
+        </head>        
+        
         <!-- TopBar -->
         <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
-            <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+            <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3 btn-fa">
                 <i class="fa fa-bars"></i>
             </button>
             <ul class="navbar-nav ml-auto">
