@@ -7,7 +7,9 @@ if ($_SESSION['nama_login'] == null) {
   header("location: ../login");
 };
 
-$sql = "SELECT * FROM `dataobat`";
+// $sql = "SELECT datasiswa.*,daftar_kelas.id,kelas.nama_kelas FROM `datasiswa` LEFT JOIN daftar_kelas ON daftar_kelas.no_siswa=datasiswa.no LEFT JOIN kelas ON kelas.id=daftar_kelas.Id_kelas";
+
+$sql = "SELECT dataobat.*,statusobat.id AS id_status,stokobat.name FROM `dataobat` LEFT JOIN statusobat ON statusobat.id_obat=dataobat.id LEFT JOIN stokobat ON stokobat.id=statusobat.id_stok";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -120,7 +122,7 @@ $result = mysqli_query($conn, $sql);
                           <td><?= $data['izin']; ?></td>
                           <td><img class="img-thumbnail" width="100" src="storage/img/<?= $gambar ?>" /></td>
                           <td><?= $data['golongan']; ?></td>
-                          <td></td>
+                          <td><?= $data['name']; ?></td>
                           <td>
                             <button class="btn btn-info btn-edit" data-bs-toggle="modal" data-bs-target="#editdata" data-id="<?= $data['id'] ?>" data-bs-aksi="ubah"> Ubah
                             </button>
