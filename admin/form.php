@@ -1,23 +1,7 @@
 <?php
-require_once('getdata.php');
-
-$no = $data['no'];
-$nama = $data['nama'];
-$alamat = $data['alamat'];
-$nohp = $data['nohp'];
-$gender = $data['gender'];
-$email = $data['email'];
-$file = $data['file'];
-$idkelas = $data['id_kelas'];
 
 ?>
 
-
-<?php
-// CEK AKSI FORM
-if ($_POST['aksi'] == 'ubah') {
-    # code...
-?>
 
     <form id="form" action="editdata.php" method="POST" enctype="multipart/form-data">
 
@@ -73,17 +57,4 @@ if ($_POST['aksi'] == 'ubah') {
         <button type="submit" class="btn btn-primary" value="ubah">Ubah Data</button>
     </form>
 
-<?php
-} else {
-?>
 
-    <h4>Apakah Anda Yakin Ingin Menghapus Data Ini?</h4>
-
-    <form action="hapusdata.php" method="post">
-        <input type="hidden" name="no" value="<?= $no; ?>">
-        <input type="submit" value="hapus" class="btn btn-danger">
-    </form>
-
-<?php
-}
-?>

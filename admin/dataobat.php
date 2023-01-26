@@ -27,8 +27,10 @@ $result = mysqli_query($conn, $sql);
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/ruang-admin.min.css" rel="stylesheet">
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <!-- <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
   <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 
 </head>
 
@@ -45,6 +47,27 @@ $result = mysqli_query($conn, $sql);
         <!-- Topbar -->
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
+          <?php
+          if (isset($_GET['success'])) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <?= $_GET['success']; ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php }
+          ?>
+          <?php
+          if (isset($_GET['alert'])) { ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <?= $_GET['alert']; ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php }
+          ?>
+
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Obat-Obatan</h1>
             <ol class="breadcrumb">
@@ -59,7 +82,7 @@ $result = mysqli_query($conn, $sql);
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <a class="btn btn-success" href="#">TAMBAH DATA</a>
+                  <a class="btn btn-success" href="add_obat.php">TAMBAH DATA</a>
                 </div>
                 <div class="table-responsive p-3">
                   <table class="table align-items-center table-flush table-hover" id="mytable">
@@ -99,9 +122,9 @@ $result = mysqli_query($conn, $sql);
                           <td></td>
                           <td></td>
                           <td>
-                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editdata" data-bs-id="<?= $data['id'] ?>" data-bs-aksi="ubah"> Ubah
+                            <button class="btn btn-info btn-edit" data-bs-toggle="modal" data-bs-target="#editdata" data-id="<?= $data['id'] ?>" data-bs-aksi="ubah"> Ubah
                             </button>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editdata" data-bs-id="<?= $data['id'] ?>" data-bs-aksi="hapus"> Hapus
+                            <button class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="<?= $data['id'] ?>"> Hapus
                             </button>
                           </td>
                         </tr>
@@ -140,22 +163,22 @@ $result = mysqli_query($conn, $sql);
             </div>
           </div>
 
-          <!-- Modal Edit Data -->
-          <div class="modal fade" id="editdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeledit" aria-hidden="true">
+          <!-- MODAL EDIT BOOTSTRAP 4-->
+          <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabeledit">Ohh No!</h5>
+                  <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body" id="edit-body">
-                  <p>Are you sure you want to logout?</p>
+
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                  <a href="login.php" class="btn btn-primary">Logout</a>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
                 </div>
               </div>
             </div>
@@ -187,10 +210,15 @@ $result = mysqli_query($conn, $sql);
   </a>
 
   <!-- JQUERY 3.X -->
-  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 
   <!-- BOOTSTRAP JS -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
+
+  <!-- BOOTSTRAP 4 JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
 
   <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -216,28 +244,44 @@ $result = mysqli_query($conn, $sql);
   </script>
 
   <!-- EDIT DATA MODAL -->
-  <Script>
-    $(document).ready(function() {
-      // alert('Hallo');
-      const modal = document.getElementById('editdata')
-      modal.addEventListener('show.bs.modal', event => {
-        const button = event.relatedTarget
-        const id = button.getAttribute('data-bs-id');
-        const aksi = button.getAttribute('data-bs-aksi');
-        console.log(id);
-        $.post('form.php', {
-          id,
-          aksi
-        }, function(a) {
-          // console.log(a);
-        }).done(function(x) {
-          $('#edit-body').html(x);
-        }).fail(function() {
-          alert("error");
-        }).always(function() {
-          // alert("finished");
+  <script>
+    $(document).on('click', '.btn-edit', function() {
+      var id = $(this).data('id');
+      $.ajax({
+          url: 'form.php',
+          type: 'POST',
+          data: {
+            id: id
+          },
+          dataType: 'html'
+        })
+        .done(function(data) {
+          $('#editModal').modal('show');
+          $('#edit-body').html(data);
+        })
+        .fail(function() {
+          alert("Error fetching form. Please try again.");
         });
-      });
+    });
+  </script>
+  <script>
+    $(document).on('click', '.btn-delete', function() {
+      var id = $(this).data('id');
+      $.ajax({
+          url: 'delete_obat.php',
+          type: 'POST',
+          data: {
+            id: id
+          },
+          dataType: 'html'
+        })
+        .done(function(data) {
+          $('#editModal').modal('show');
+          $('#edit-body').html(data);
+        })
+        .fail(function() {
+          alert("Error fetching form. Please try again.");
+        });
     });
   </script>
 
