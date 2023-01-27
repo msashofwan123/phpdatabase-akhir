@@ -22,10 +22,10 @@ $sql .="WHERE `id`='$id'";
 $update = mysqli_query($conn, $sql);
 
 if ($update) {
-    // header('location: dataobat.php?success=Data Berhasil Diubah');
-    echo var_dump($_POST);
+    header('location: dataobat.php?success=Data Berhasil Diubah');
+    // echo var_dump($_POST);
 } else {
-    // header('Location: dataobat.php?alert=Data Tidak Diupdate');
+    header('Location: dataobat.php?alert=Data Tidak Diupdate');
 }
 
 

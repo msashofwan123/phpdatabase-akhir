@@ -23,7 +23,7 @@ if ($result->fetch_row()[0] > 0) {
     } else {
         
         // INPUT DATA AKUN BARU KE DATABASE
-        $sql = "INSERT INTO `login` (`username`, `password`) VALUES ('$username', '$pass')";
+        $sql = "INSERT INTO `login` (`username`, `email`, `password`) VALUES ('$username', '$email', '$pass')";
         $insert = mysqli_query($conn, $sql);
 
         // MEMBERIKAN PESAN KONFIRMASI BILA REGISTER BERHASIL

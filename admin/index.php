@@ -5,6 +5,23 @@ if ($_SESSION['nama_login'] == null) {
     header("location: ../login");
 };
 
+require_once('../database/koneksi.php');
+$sql = "SELECT COUNT(*) FROM dataobat";
+$query = mysqli_query($conn, $sql);
+$result = mysqli_fetch_array($query)[0];
+
+$sql_tersedia = "SELECT COUNT(id_stok) FROM `statusobat` WHERE `id_stok` = 1";
+$query_tersedia = mysqli_query($conn, $sql_tersedia);
+$result_tersedia = mysqli_fetch_array($query_tersedia)[0];
+
+$sql_pengiriman = "SELECT COUNT(id_stok) FROM `statusobat` WHERE `id_stok` = 4";
+$query_pengiriman = mysqli_query($conn, $sql_pengiriman);
+$result_pengiriman = mysqli_fetch_array($query_pengiriman)[0];
+
+$sql_habis = "SELECT COUNT(id_stok) FROM `statusobat` WHERE `id_stok` = 2";
+$query_habis = mysqli_query($conn, $sql_habis);
+$result_habis = mysqli_fetch_array($query_habis)[0];
+
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +72,7 @@ if ($_SESSION['nama_login'] == null) {
                   <div class="row align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-uppercase mb-1">Data Jumlah Obat-Obatan</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">120 Obat</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php print $result; ?> Obat</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-success mr-2">Obat-Obatan Yang Tersedia</span>
                       </div>
@@ -73,14 +90,14 @@ if ($_SESSION['nama_login'] == null) {
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Penjualan</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">650 pcs</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Tersedia Di Gudang</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php print $result_tersedia; ?> Obat</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
                         <span class="text-success mr-2">Penjualan Via Online dan Offline</span>
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                      <i class="fa fa-check-square fa-2x text-success"></i>
                     </div>
                   </div>
                 </div>
@@ -92,14 +109,14 @@ if ($_SESSION['nama_login'] == null) {
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Jumlah Anggota</div>
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3128 Anggota</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Dalam Pengiriman</div>
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php print $result_pengiriman; ?> Obat</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2">Bergabung Bersama Inspira Media</span>
+                        <span class="text-success mr-2">Menggunakan Jasa Pengiriman Internal</span>
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-info"></i>
+                      <i class="fa fa-truck fa-2x text-info"></i>
                     </div>
                   </div>
                 </div>
@@ -111,14 +128,14 @@ if ($_SESSION['nama_login'] == null) {
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-uppercase mb-1">Respon Masyarakat</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">128 Respon</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Obat Habis</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php print $result_habis; ?> Obat</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2">Kritik Dan Saran Dari Masyarakat</span>
+                        <span class="text-success mr-2">Proses Pemesanan kepada Pabrik</span>
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-warning"></i>
+                      <i class="fas fa-times fa-2x text-danger"></i>
                     </div>
                   </div>
                 </div>

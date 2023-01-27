@@ -159,7 +159,7 @@ $result = mysqli_query($conn, $sql);
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                  <a href="login.php" class="btn btn-primary">Logout</a>
+                  <a href="../index.php" class="btn btn-primary">Logout</a>
                 </div>
               </div>
             </div>
